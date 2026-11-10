@@ -1,0 +1,1605 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJIO - Online Shopping</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* TOP NAVIGATION */
+
+.top-info {
+    background: #fff;
+    text-align: right;
+    padding: 8px 5%;
+    font-size: 12px;
+    color: #304355;
+}
+
+.navbar {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px 25px;
+    background: white;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    font-size: 55px;
+    font-weight: bold;
+    color: #304355;
+    letter-spacing: 3px;
+}
+
+.menu {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: #a00035;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search {
+    width: 220px;
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #304355;
+    background: #fffdf2;
+}
+
+.nav-icon {
+    background: #304355;
+    color: white;
+    border-radius: 50%;
+    padding: 11px;
+    font-size: 17px;
+}
+
+/* MAIN OFFER BANNER */
+
+.main-offer {
+    background: linear-gradient(90deg,#600000,#d00000,#650000);
+    min-height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+.offer-logo {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.offer-main {
+    text-align: center;
+}
+
+.offer-main h2 {
+    font-size: 25px;
+}
+
+.offer-main h1 {
+    font-size: 75px;
+}
+
+.offer-main p {
+    font-size: 17px;
+}
+
+.offer-code {
+    border: 4px solid white;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    transform: rotate(-5deg);
+}
+
+.qr {
+    text-align: center;
+}
+
+.qr img {
+    width: 115px;
+    height: 115px;
+    padding: 4px;
+    background: white;
+}
+
+.qr p {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* MAIN CAROUSEL */
+
+.main-carousel {
+    width: 94%;
+    height: 430px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+}
+
+.hero-slide.active {
+    display: block;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    padding: 25px;
+    max-width: 380px;
+    border-radius: 12px;
+}
+
+.hero-text h1 {
+    font-size: 35px;
+    color: #304355;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 19px;
+    margin-bottom: 18px;
+}
+
+.shop-btn {
+    display: inline-block;
+    background: #a00035;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.shop-btn:hover {
+    background: #700025;
+}
+
+.hero-arrow {
+    position: absolute;
+    top: 45%;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 25px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.hero-prev {
+    left: 10px;
+}
+
+.hero-next {
+    right: 10px;
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.hero-dot {
+    width: 28px;
+    height: 11px;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    background: white;
+}
+
+.hero-dot.active {
+    background: black;
+}
+
+/* SBI OFFER */
+
+.sbi-banner {
+    width: 95%;
+    min-height: 85px;
+    border: 2px solid #777;
+    border-radius: 20px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.sbi-logo {
+    color: red;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.sbi-logo span {
+    color: #008bc4;
+}
+
+.sbi-banner h1 {
+    font-size: 28px;
+}
+
+.sbi-banner p {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* SECTION HEADINGS */
+
+.heading {
+    text-align: center;
+    font-family: Georgia,serif;
+    font-size: 35px;
+    color: #b78a19;
+    margin: 35px 10px 25px;
+    text-transform: uppercase;
+}
+
+/* SPONSOR CAROUSEL */
+
+.sponsor-carousel {
+    width: 90%;
+    height: 400px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    background: #eee;
+}
+
+.sponsor-slide {
+    height: 100%;
+    width: 100%;
+    display: none;
+    grid-template-columns: 55% 45%;
+}
+
+.sponsor-slide.active {
+    display: grid;
+}
+
+.sponsor-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sponsor-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e9e9e9;
+    text-align: center;
+    padding: 20px;
+}
+
+.sponsor-brand {
+    width: 100%;
+    background: #304355;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 30px 10px;
+}
+
+.sponsor-content h1 {
+    font-size: 38px;
+    margin: 25px 0;
+}
+
+.sponsor-content a {
+    background: black;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+}
+
+.sponsor-arrow {
+    position: absolute;
+    top: 45%;
+    background: black;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.sponsor-prev {
+    left: 8px;
+}
+
+.sponsor-next {
+    right: 8px;
+}
+
+.sponsor-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.sponsor-dot {
+    width: 25px;
+    height: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+.sponsor-dot.active {
+    background: black;
+}
+
+/* CATEGORY CARDS */
+
+.category-section {
+    padding: 20px 4%;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 18px;
+}
+
+.category-card {
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f6f3ef;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 5px 15px #ccc;
+}
+
+.category-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    padding: 15px 5px;
+    font-size: 17px;
+    color: #304355;
+}
+
+/* PRODUCTS */
+
+.products-section {
+    padding: 20px 4%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    transition: 0.3s;
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px #ccc;
+    transform: translateY(-4px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.product-info {
+    padding: 13px;
+}
+
+.product-info h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #304355;
+}
+
+.product-info p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+
+.old-price {
+    color: #888;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.discount {
+    color: #16804b;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.add-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 11px;
+    background: #304355;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background: #a00035;
+}
+
+/* SPECIAL OFFER */
+
+.special-offer {
+    background: linear-gradient(90deg,#f8d9b2,#f6c8d1,#f9e9c5);
+    margin: 40px 3%;
+    padding: 45px 15px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.special-offer h1 {
+    font-size: 40px;
+    color: #8b1740;
+}
+
+.special-offer p {
+    font-size: 20px;
+    margin: 15px;
+}
+
+/* AD CARDS */
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 20px 4%;
+}
+
+.offer-card {
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.offer-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.offer-card h2 {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: white;
+    padding: 12px;
+    color: #304355;
+}
+
+/* CART MESSAGE */
+
+.cart-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #304355;
+    color: white;
+    padding: 15px 22px;
+    border-radius: 8px;
+    display: none;
+    z-index: 50;
+}
+
+/* FOOTER */
+
+footer {
+    background: #24384b;
+    color: white;
+    padding: 40px 5%;
+    margin-top: 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+footer h3 {
+    margin-bottom: 18px;
+}
+
+footer a {
+    display: block;
+    color: #ddd;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #647483;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+
+    .product-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .navbar {
+        gap: 15px;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .search {
+        width: 170px;
+    }
+
+    .offer-logo {
+        font-size: 35px;
+    }
+
+    .offer-main h1 {
+        font-size: 40px;
+    }
+
+    .offer-code {
+        font-size: 13px;
+    }
+
+    .qr img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .main-carousel {
+        height: 320px;
+        width: 96%;
+    }
+
+    .hero-text {
+        left: 10%;
+        max-width: 230px;
+        padding: 12px;
+    }
+
+    .hero-text h1 {
+        font-size: 20px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .sponsor-carousel {
+        height: 280px;
+        width: 96%;
+    }
+
+    .sponsor-brand {
+        font-size: 14px;
+        padding: 15px 5px;
+    }
+
+    .sponsor-content h1 {
+        font-size: 19px;
+    }
+
+    .sbi-banner h1 {
+        font-size: 20px;
+    }
+
+    .heading {
+        font-size: 25px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .product-info {
+        padding: 8px;
+    }
+
+    .product-info h3 {
+        font-size: 13px;
+    }
+
+    .offer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .special-offer h1 {
+        font-size: 27px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP INFORMATION -->
+
+<div class="top-info">
+    Sign In / Join AJIO &nbsp;&nbsp; | &nbsp;&nbsp;
+    Customer Care &nbsp;&nbsp; | &nbsp;&nbsp;
+    Visit AJIOLUXE
+</div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">AJIO</div>
+
+    <div class="menu">
+        <a href="#men">MEN</a>
+        <a href="#women">WOMEN</a>
+        <a href="#kids">KIDS</a>
+        <a href="#beauty">BEAUTY</a>
+        <a href="#home">HOME & KITCHEN</a>
+    </div>
+
+    <div class="nav-right">
+
+        <input type="text" class="search"
+        id="searchBox" placeholder="Search AJIO">
+
+        <a href="#products" class="nav-icon">♡</a>
+
+        <a href="#cart" class="nav-icon">
+            🛍 <span id="cartCount">0</span>
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- MAIN ADVERTISEMENT -->
+
+<div class="main-offer">
+
+    <div class="offer-logo">AJIO</div>
+
+    <div class="offer-main">
+        <h2>GET FLAT</h2>
+        <h1>30% OFF</h1>
+        <p>ON 1st PURCHASE</p>
+    </div>
+
+    <div class="offer-code">
+        USE CODE: NEW30
+    </div>
+
+    <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.ajio.com/"
+        alt="AJIO QR Code">
+        <p>SCAN & SHOP</p>
+    </div>
+
+</div>
+
+<!-- MAIN CAROUSEL -->
+
+<div class="main-carousel">
+
+    <div class="hero-slide active">
+
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600" alt="Fashion">
+
+        <div class="hero-text">
+            <h1>FASHION FOR EVERY MOOD</h1>
+            <p>Discover the latest fashion collections.</p>
+            <a href="https://www.ajio.com/" target="_blank" class="shop-btn">SHOP NOW</a>
+        </div>
+
+    </div>
+
+    <div class="hero-slide">
+
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1600" alt="New trends">
+
+        <div class="hero-text">
+            <h1>NEW STYLE ARRIVALS</h1>
+            <p>Upgrade your everyday look.</p>
+            <a href="https://www.ajio.com/" target="_blank" class="shop-btn">EXPLORE NOW</a>
+        </div>
+
+    </div>
+
+    <div class="hero-slide">
+
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1600" alt="Style">
+
+        <div class="hero-text">
+            <h1>STYLE THAT SPEAKS</h1>
+            <p>Find your favourite collection.</p>
+            <a href="https://www.ajio.com/" target="_blank" class="shop-btn">SHOP NOW</a>
+        </div>
+
+    </div>
+
+    <div class="hero-slide">
+
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600" alt="Collection">
+
+        <div class="hero-text">
+            <h1>MEGA FASHION SALE</h1>
+            <p>Exciting offers on selected styles.</p>
+            <a href="https://www.ajio.com/" target="_blank" class="shop-btn">DISCOVER MORE</a>
+        </div>
+
+    </div>
+
+    <button class="hero-arrow hero-prev" onclick="moveHero(-1)">❮</button>
+    <button class="hero-arrow hero-next" onclick="moveHero(1)">❯</button>
+
+    <div class="hero-dots">
+        <button class="hero-dot active" onclick="selectHero(0)"></button>
+        <button class="hero-dot" onclick="selectHero(1)"></button>
+        <button class="hero-dot" onclick="selectHero(2)"></button>
+        <button class="hero-dot" onclick="selectHero(3)"></button>
+    </div>
+
+</div>
+
+<!-- SBI CARD OFFER -->
+
+<div class="sbi-banner">
+
+    <div class="sbi-logo">
+        Reliance
+        <br>
+        <span>SBI card</span>
+    </div>
+
+    <h1>UP TO 10% SAVINGS*</h1>
+
+    <p>
+        5% INSTANT DISCOUNT + 5%
+        <br>
+        VALUEBACK AS SBI CARD REWARDS POINTS
+    </p>
+
+</div>
+
+<!-- SPONSOR SPOTLIGHT -->
+
+<h1 class="heading">SPONSORS' SPOTLIGHT</h1>
+
+<div class="sponsor-carousel">
+
+    <div class="sponsor-slide active">
+
+        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=1200" alt="Sports">
+
+        <div class="sponsor-content">
+            <div class="sponsor-brand">UNDER ARMOUR</div>
+            <h1>MIN. 40% OFF*</h1>
+            <a href="https://www.ajio.com/search/?text=under+armour" target="_blank">SHOP NOW</a>
+        </div>
+
+    </div>
+
+    <div class="sponsor-slide">
+
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200" alt="Shoes">
+
+        <div class="sponsor-content">
+            <div class="sponsor-brand">SPORTS COLLECTION</div>
+            <h1>UP TO 50% OFF*</h1>
+            <a href="https://www.ajio.com/search/?text=sports+shoes" target="_blank">SHOP NOW</a>
+        </div>
+
+    </div>
+
+    <div class="sponsor-slide">
+
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200" alt="Fitness">
+
+        <div class="sponsor-content">
+            <div class="sponsor-brand">FITNESS COLLECTION</div>
+            <h1>MIN. 30% OFF*</h1>
+            <a href="https://www.ajio.com/search/?text=fitness" target="_blank">SHOP NOW</a>
+        </div>
+
+    </div>
+
+    <button class="sponsor-arrow sponsor-prev" onclick="moveSponsor(-1)">❮</button>
+    <button class="sponsor-arrow sponsor-next" onclick="moveSponsor(1)">❯</button>
+
+    <div class="sponsor-dots">
+        <button class="sponsor-dot active" onclick="selectSponsor(0)"></button>
+        <button class="sponsor-dot" onclick="selectSponsor(1)"></button>
+        <button class="sponsor-dot" onclick="selectSponsor(2)"></button>
+    </div>
+
+</div>
+
+<!-- CATEGORY SECTION -->
+
+<h1 class="heading">SHOP BY CATEGORY</h1>
+
+<section class="category-section">
+
+<div class="category-grid">
+
+    <a href="#men" class="category-card">
+        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=500" alt="Men">
+        <h3>MEN</h3>
+    </a>
+
+    <a href="#women" class="category-card">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500" alt="Women">
+        <h3>WOMEN</h3>
+    </a>
+
+    <a href="#kids" class="category-card">
+        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500" alt="Kids">
+        <h3>KIDS</h3>
+    </a>
+
+    <a href="#beauty" class="category-card">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500" alt="Beauty">
+        <h3>BEAUTY</h3>
+    </a>
+
+    <a href="#home" class="category-card">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500" alt="Home">
+        <h3>HOME</h3>
+    </a>
+
+    <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
+        <h3>FOOTWEAR</h3>
+    </a>
+
+</div>
+
+</section>
+
+<!-- MEN PRODUCTS -->
+
+<h1 class="heading" id="men">MEN'S COLLECTION</h1>
+
+<section class="products-section">
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="Men T shirt">
+<div class="product-info">
+<h3>Men Casual T-Shirt</h3>
+<p>Stylish Cotton Collection</p>
+<span class="price">₹599</span>
+<span class="old-price">₹999</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Men Casual T-Shirt')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=500" alt="Jeans">
+<div class="product-info">
+<h3>Men Denim Jeans</h3>
+<p>Regular Fit Jeans</p>
+<span class="price">₹1,199</span>
+<span class="old-price">₹1,999</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Men Denim Jeans')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500" alt="Shirt">
+<div class="product-info">
+<h3>Men Casual Shirt</h3>
+<p>Premium Fashion Shirt</p>
+<span class="price">₹899</span>
+<span class="old-price">₹1,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Men Casual Shirt')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=500" alt="Jacket">
+<div class="product-info">
+<h3>Men Stylish Jacket</h3>
+<p>Latest Collection</p>
+<span class="price">₹1,499</span>
+<span class="old-price">₹2,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Men Stylish Jacket')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
+<div class="product-info">
+<h3>Sports Shoes</h3>
+<p>Comfortable Running Shoes</p>
+<span class="price">₹1,299</span>
+<span class="old-price">₹2,199</span>
+<div class="discount">41% OFF</div>
+<button class="add-btn" onclick="addCart('Sports Shoes')">ADD TO CART</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- WOMEN PRODUCTS -->
+
+<h1 class="heading" id="women">WOMEN'S COLLECTION</h1>
+
+<section class="products-section">
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500" alt="Women dress">
+<div class="product-info">
+<h3>Women Fashion Dress</h3>
+<p>Elegant Party Wear</p>
+<span class="price">₹1,299</span>
+<span class="old-price">₹2,499</span>
+<div class="discount">48% OFF</div>
+<button class="add-btn" onclick="addCart('Women Fashion Dress')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500" alt="Women outfit">
+<div class="product-info">
+<h3>Women Casual Wear</h3>
+<p>Trendy Daily Wear</p>
+<span class="price">₹899</span>
+<span class="old-price">₹1,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Women Casual Wear')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=500" alt="Handbag">
+<div class="product-info">
+<h3>Fashion Handbag</h3>
+<p>Premium Handbag</p>
+<span class="price">₹999</span>
+<span class="old-price">₹1,799</span>
+<div class="discount">44% OFF</div>
+<button class="add-btn" onclick="addCart('Fashion Handbag')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Fashion top">
+<div class="product-info">
+<h3>Women Stylish Top</h3>
+<p>Modern Collection</p>
+<span class="price">₹699</span>
+<span class="old-price">₹1,199</span>
+<div class="discount">42% OFF</div>
+<button class="add-btn" onclick="addCart('Women Stylish Top')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500" alt="Heels">
+<div class="product-info">
+<h3>Women Fashion Heels</h3>
+<p>Party Wear Footwear</p>
+<span class="price">₹1,099</span>
+<span class="old-price">₹1,999</span>
+<div class="discount">45% OFF</div>
+<button class="add-btn" onclick="addCart('Women Fashion Heels')">ADD TO CART</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- KIDS PRODUCTS -->
+
+<h1 class="heading" id="kids">KIDS COLLECTION</h1>
+
+<section class="products-section">
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500" alt="Kids outfit">
+<div class="product-info">
+<h3>Kids Fashion Dress</h3>
+<p>Comfortable Wear</p>
+<span class="price">₹499</span>
+<span class="old-price">₹899</span>
+<div class="discount">44% OFF</div>
+<button class="add-btn" onclick="addCart('Kids Fashion Dress')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=500" alt="Kids wear">
+<div class="product-info">
+<h3>Kids Casual Wear</h3>
+<p>Daily Wear Collection</p>
+<span class="price">₹599</span>
+<span class="old-price">₹999</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Kids Casual Wear')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500" alt="Kids outfit">
+<div class="product-info">
+<h3>Kids Party Wear</h3>
+<p>Special Occasion Wear</p>
+<span class="price">₹799</span>
+<span class="old-price">₹1,299</span>
+<div class="discount">38% OFF</div>
+<button class="add-btn" onclick="addCart('Kids Party Wear')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Kids shoes">
+<div class="product-info">
+<h3>Kids Sports Shoes</h3>
+<p>Comfortable Shoes</p>
+<span class="price">₹699</span>
+<span class="old-price">₹1,099</span>
+<div class="discount">36% OFF</div>
+<button class="add-btn" onclick="addCart('Kids Sports Shoes')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=500" alt="Kids clothing">
+<div class="product-info">
+<h3>Kids Trendy Outfit</h3>
+<p>New Arrivals</p>
+<span class="price">₹899</span>
+<span class="old-price">₹1,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Kids Trendy Outfit')">ADD TO CART</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- BEAUTY PRODUCTS -->
+
+<h1 class="heading" id="beauty">BEAUTY COLLECTION</h1>
+
+<section class="products-section">
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500" alt="Makeup">
+<div class="product-info">
+<h3>Beauty Makeup Kit</h3>
+<p>Daily Makeup Collection</p>
+<span class="price">₹799</span>
+<span class="old-price">₹1,299</span>
+<div class="discount">38% OFF</div>
+<button class="add-btn" onclick="addCart('Beauty Makeup Kit')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500" alt="Skincare">
+<div class="product-info">
+<h3>Skin Care Products</h3>
+<p>Beauty Essentials</p>
+<span class="price">₹599</span>
+<span class="old-price">₹999</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Skin Care Products')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=500" alt="Perfume">
+<div class="product-info">
+<h3>Premium Perfume</h3>
+<p>Fragrance Collection</p>
+<span class="price">₹999</span>
+<span class="old-price">₹1,599</span>
+<div class="discount">37% OFF</div>
+<button class="add-btn" onclick="addCart('Premium Perfume')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500" alt="Beauty">
+<div class="product-info">
+<h3>Beauty Essentials</h3>
+<p>Makeup Collection</p>
+<span class="price">₹499</span>
+<span class="old-price">₹899</span>
+<div class="discount">44% OFF</div>
+<button class="add-btn" onclick="addCart('Beauty Essentials')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500" alt="Cosmetics">
+<div class="product-info">
+<h3>Cosmetic Collection</h3>
+<p>Beauty Products</p>
+<span class="price">₹699</span>
+<span class="old-price">₹1,099</span>
+<div class="discount">36% OFF</div>
+<button class="add-btn" onclick="addCart('Cosmetic Collection')">ADD TO CART</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- HOME PRODUCTS -->
+
+<h1 class="heading" id="home">HOME & KITCHEN COLLECTION</h1>
+
+<section class="products-section">
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500" alt="Home decor">
+<div class="product-info">
+<h3>Home Decor Items</h3>
+<p>Modern Home Collection</p>
+<span class="price">₹899</span>
+<span class="old-price">₹1,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Home Decor Items')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=500" alt="Kitchen">
+<div class="product-info">
+<h3>Kitchen Essentials</h3>
+<p>Kitchen Collection</p>
+<span class="price">₹699</span>
+<span class="old-price">₹1,199</span>
+<div class="discount">42% OFF</div>
+<button class="add-btn" onclick="addCart('Kitchen Essentials')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500" alt="Home decor">
+<div class="product-info">
+<h3>Decorative Items</h3>
+<p>Premium Home Decor</p>
+<span class="price">₹499</span>
+<span class="old-price">₹899</span>
+<div class="discount">44% OFF</div>
+<button class="add-btn" onclick="addCart('Decorative Items')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500" alt="Furniture">
+<div class="product-info">
+<h3>Home Furniture</h3>
+<p>Modern Furniture</p>
+<span class="price">₹2,499</span>
+<span class="old-price">₹3,999</span>
+<div class="discount">37% OFF</div>
+<button class="add-btn" onclick="addCart('Home Furniture')">ADD TO CART</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500" alt="Home">
+<div class="product-info">
+<h3>Living Room Decor</h3>
+<p>Home Collection</p>
+<span class="price">₹1,499</span>
+<span class="old-price">₹2,499</span>
+<div class="discount">40% OFF</div>
+<button class="add-btn" onclick="addCart('Living Room Decor')">ADD TO CART</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- SPECIAL OFFERS -->
+
+<div class="special-offer">
+
+    <h1>MEGA FASHION SALE</h1>
+
+    <p>EXCITING OFFERS ON YOUR FAVOURITE COLLECTIONS</p>
+
+    <a href="https://www.ajio.com/" target="_blank" class="shop-btn">
+        EXPLORE NOW
+    </a>
+
+</div>
+
+<!-- ADVERTISEMENT CARDS -->
+
+<h1 class="heading">SPECIAL ADVERTISEMENTS</h1>
+
+<div class="offer-grid">
+
+    <div class="offer-card">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="Fashion">
+        <h2>NEW FASHION ARRIVALS</h2>
+    </div>
+
+    <div class="offer-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800" alt="Shoes">
+        <h2>FOOTWEAR COLLECTION</h2>
+    </div>
+
+    <div class="offer-card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" alt="Women">
+        <h2>STYLE YOUR LOOK</h2>
+    </div>
+
+</div>
+
+<!-- CART MESSAGE -->
+
+<div class="cart-message" id="cartMessage">
+    Product added to cart!
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+    <div>
+        <h3>AJIO</h3>
+        <a href="https://www.ajio.com/">About AJIO</a>
+        <a href="https://www.ajio.com/">Who We Are</a>
+        <a href="https://www.ajio.com/">Careers</a>
+        <a href="https://www.ajio.com/">AJIO Blog</a>
+    </div>
+
+    <div>
+        <h3>HELP</h3>
+        <a href="https://www.ajio.com/">Customer Care</a>
+        <a href="https://www.ajio.com/">Contact Us</a>
+        <a href="https://www.ajio.com/">FAQs</a>
+        <a href="https://www.ajio.com/">Shipping</a>
+    </div>
+
+    <div>
+        <h3>SHOP BY</h3>
+        <a href="#men">Men</a>
+        <a href="#women">Women</a>
+        <a href="#kids">Kids</a>
+        <a href="#beauty">Beauty</a>
+    </div>
+
+    <div>
+        <h3>POLICIES</h3>
+        <a href="https://www.ajio.com/">Terms & Conditions</a>
+        <a href="https://www.ajio.com/">Privacy Policy</a>
+        <a href="https://www.ajio.com/">Returns</a>
+        <a href="https://www.ajio.com/">Refund Policy</a>
+    </div>
+
+</div>
+
+<div class="copyright">
+    <p>© 2026 AJIO Style Shopping Website. All Rights Reserved.</p>
+</div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// MAIN CAROUSEL
+
+let heroIndex = 0;
+
+let heroSlides = document.querySelectorAll(".hero-slide");
+let heroDots = document.querySelectorAll(".hero-dot");
+let heroTimer;
+
+function showHero(n) {
+
+    heroSlides.forEach(function(slide) {
+        slide.classList.remove("active");
+    });
+
+    heroDots.forEach(function(dot) {
+        dot.classList.remove("active");
+    });
+
+    heroIndex = (n + heroSlides.length) % heroSlides.length;
+
+    heroSlides[heroIndex].classList.add("active");
+    heroDots[heroIndex].classList.add("active");
+}
+
+function moveHero(n) {
+    showHero(heroIndex + n);
+    resetHero();
+}
+
+function selectHero(n) {
+    showHero(n);
+    resetHero();
+}
+
+function startHero() {
+    heroTimer = setInterval(function() {
+        showHero(heroIndex + 1);
+    }, 4000);
+}
+
+function resetHero() {
+    clearInterval(heroTimer);
+    startHero();
+}
+
+startHero();
+
+
+// SPONSOR CAROUSEL
+
+let sponsorIndex = 0;
+
+let sponsorSlides = document.querySelectorAll(".sponsor-slide");
+let sponsorDots = document.querySelectorAll(".sponsor-dot");
+let sponsorTimer;
+
+function showSponsor(n) {
+
+    sponsorSlides.forEach(function(slide) {
+        slide.classList.remove("active");
+    });
+
+    sponsorDots.forEach(function(dot) {
+        dot.classList.remove("active");
+    });
+
+    sponsorIndex = (n + sponsorSlides.length) % sponsorSlides.length;
+
+    sponsorSlides[sponsorIndex].classList.add("active");
+    sponsorDots[sponsorIndex].classList.add("active");
+}
+
+function moveSponsor(n) {
+    showSponsor(sponsorIndex + n);
+    resetSponsor();
+}
+
+function selectSponsor(n) {
+    showSponsor(n);
+    resetSponsor();
+}
+
+function startSponsor() {
+    sponsorTimer = setInterval(function() {
+        showSponsor(sponsorIndex + 1);
+    }, 4000);
+}
+
+function resetSponsor() {
+    clearInterval(sponsorTimer);
+    startSponsor();
+}
+
+startSponsor();
+
+
+// ADD TO CART
+
+let cart = 0;
+
+function addCart(productName) {
+
+    cart++;
+
+    document.getElementById("cartCount").innerText = cart;
+
+    let message = document.getElementById("cartMessage");
+
+    message.innerText = productName + " added to cart!";
+
+    message.style.display = "block";
+
+    setTimeout(function() {
+        message.style.display = "none";
+    }, 2000);
+
+}
+
+
+// SEARCH PRODUCTS
+
+document.getElementById("searchBox").addEventListener("input", function() {
+
+    let value = this.value.toLowerCase();
+
+    let products = document.querySelectorAll(".product-card");
+
+    products.forEach(function(product) {
+
+        let name = product.querySelector("h3").innerText.toLowerCase();
+
+        if(name.includes(value)) {
+            product.style.display = "block";
+        }
+        else {
+            product.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
